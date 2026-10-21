@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Venus Pair</title>
+<meta name="description" content="Venus Pair tracks the ten busiest boosted names on Solana and refreshes them each minute.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Venus Pair">
+<meta property="og:description" content="A gas giant, Solana, and a board that watches volume around the clock.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://venuspair.xyz/">
+<meta property="og:image" content="https://venuspair.xyz/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://venuspair.xyz/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="/boot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/styles.css">
+<link rel="preload" as="image" href="/assets/planet-1024.webp" type="image/webp">
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+
+<header class="top">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top"><strong>Venus Pair</strong></a>
+    <div class="nav-links" id="nav-links">
+      <a href="#market" data-spy="market">Board</a>
+      <a href="#orbit" data-spy="orbit">Orbit</a>
+      <a href="#notes" data-spy="notes">Notes</a>
+    </div>
+    <div class="socials">{{SOCIAL}}</div>
+  </nav>
+</header>
+
+<main id="top">
+{{CA_SLOT}}
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-art" aria-hidden="true">
+      <canvas class="layer stars" id="stars" data-depth="0.15"></canvas>
+      <div class="layer mesh" data-depth="0.35"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+      <div class="layer rings" data-depth="0.6"><i class="ring r1"></i><i class="ring r2"></i></div>
+      <div class="layer orb" data-depth="1">
+        <img class="planet" src="/assets/planet-1024.webp" srcset="/assets/planet-512.webp 512w, /assets/planet-1024.webp 1024w" sizes="(max-width: 700px) 70vw, 520px" width="1024" height="1024" alt="" fetchpriority="high">
+      </div>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow reveal">Solana · streaming board</p>
+      <h1 id="hero-title" class="reveal">A gas giant. Ten loud tickers.</h1>
+      <p class="lead reveal">Venus Pair circles the Solana tape and pulls the heaviest boosted names into a single view, refreshed each minute so you read movement as it happens.</p>
+      <ol class="steps">
+        <li class="reveal spot"><span class="eyebrow">01 · Signal</span><strong>Boosted names</strong><span>We begin with the names Solana traders are pushing hardest right now.</span></li>
+        <li class="reveal spot"><span class="eyebrow">02 · Weight</span><strong>Volume decides</strong><span>Ten names with the biggest day turnover claim the first rows.</span></li>
+        <li class="reveal spot"><span class="eyebrow">03 · Verify</span><strong>Trust your own eyes</strong><span>Copy any address and inspect it independently before acting.</span></li>
+      </ol>
+      <p class="flow reveal"><em>signal</em> <i aria-hidden="true">→</i> <em>weight</em> <i aria-hidden="true">→</i> <em>verify</em></p>
+      <a class="cta reveal" href="#market">Open the board</a>
+    </div>
+  </section>
+
+  <section class="ticker" aria-label="Streaming ticker">
+    <div class="track" id="ticker-track">
+      <span class="tick skeleton"></span><span class="tick skeleton"></span><span class="tick skeleton"></span><span class="tick skeleton"></span><span class="tick skeleton"></span><span class="tick skeleton"></span>
+    </div>
+  </section>
+
+  <section class="block" id="market" aria-labelledby="market-title">
+    <header class="block-head">
+      <div>
+        <p class="eyebrow reveal">Streaming board</p>
+        <h2 id="market-title" class="reveal">Heaviest Solana tape</h2>
+      </div>
+      <div class="head-tools reveal">
+        <div class="tabs" role="tablist" aria-label="Sort board">
+          <button role="tab" type="button" class="tab" data-sort="volume" aria-selected="true">Volume</button>
+          <button role="tab" type="button" class="tab" data-sort="change" aria-selected="false">Mover</button>
+          <button role="tab" type="button" class="tab" data-sort="liquidity" aria-selected="false">Depth</button>
+        </div>
+        <p class="status" id="status" data-state="syncing" role="status"><i class="dot" aria-hidden="true"></i><span id="status-text">Syncing</span></p>
+      </div>
+    </header>
+    <p class="market-error" id="market-error" role="alert" hidden>—  Source unreachable. Retrying with a longer pause after each miss.</p>
+    <div class="rows-head" aria-hidden="true"><span>#</span><span>Name</span><span>Quote</span><span>24h</span><span>Volume</span><span>Depth</span><span></span></div>
+    <ol class="rows" id="rows" data-market="{{MARKET_STATE}}">{{SKELETON_ROWS}}</ol>
+  </section>
+
+  <section class="block" id="orbit" aria-labelledby="orbit-title">
+    <header class="block-head">
+      <div>
+        <p class="eyebrow reveal">Orbit</p>
+        <h2 id="orbit-title" class="reveal">The board in numbers</h2>
+      </div>
+    </header>
+    <div class="grid-4" id="tiles-main">
+      <article class="stat reveal spot"><span class="eyebrow">Names listed</span><strong data-tile="count" data-fmt="int">—</strong><span>Solana names currently listed below.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Day volume</span><strong data-tile="volume" data-fmt="usd">—</strong><span>Combined 24h turnover among the ten rows.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Pool depth</span><strong data-tile="liquidity" data-fmt="usd">—</strong><span>Combined pool size sitting behind those rows.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Strongest mover</span><strong data-tile="mover" data-fmt="pct">—</strong><span data-tile-note="mover">Best 24h change among the rows.</span></article>
+    </div>
+    <div class="grid-3" id="tiles-sub">
+      <article class="stat reveal spot"><span class="eyebrow">Volume leader</span><strong data-tile="leader" data-fmt="text">—</strong><span>Name with the heaviest day turnover.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Middle move</span><strong data-tile="median" data-fmt="pct">—</strong><span>Median 24h change among the ten rows.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Leader weight</span><strong data-tile="share" data-fmt="pctplain">—</strong><span>Slice of board volume held by the first row.</span></article>
+    </div>
+    <article class="stat coverage reveal spot"><span class="eyebrow">Rising names</span><strong data-tile="rising" data-fmt="text">—</strong><span>Rows posting a gain over 24h.</span><span class="bar" aria-hidden="true"><i id="share-bar"></i></span></article>
+  </section>
+
+  <section class="block" id="notes" aria-labelledby="notes-title">
+    <header class="block-head">
+      <div>
+        <p class="eyebrow reveal">Notes</p>
+        <h2 id="notes-title" class="reveal">Read before you click</h2>
+      </div>
+    </header>
+    <div class="grid-3">
+      <article class="stat reveal spot"><span class="eyebrow">Source</span><strong>Public data</strong><span>Quotes, volume and depth come from a public aggregator and carry its delays and gaps.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Boosted ≠ vetted</span><strong>Promotion is paid</strong><span>Names can climb here because someone paid for attention, not because the project is sound.</span></article>
+      <article class="stat reveal spot"><span class="eyebrow">Your call</span><strong>Not advice</strong><span>Nothing here recommends a trade. Do your own checks and size positions you can afford to lose.</span></article>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-row">
+    <strong class="foot-brand">Venus Pair</strong>
+    <ul class="chips">{{FOOT_CHIPS}}</ul>
+  </div>
+  <p class="foot-note">Informational only. Markets on Solana move fast and can go to zero.</p>
+</footer>
+
+<script type="application/json" id="vp-config">{{CONFIG}}</script>
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "venus-pair",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Venus Pair — live Solana market board.",
+  "scripts": {
+    "assets": "node scripts/assets.mjs",
+    "build": "node scripts/build.mjs",
+    "gates": "node scripts/gates.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  },
+  "license": "MIT"
+}

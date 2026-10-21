@@ -1,0 +1,48 @@
+/*
+  PALETTE — the only file allowed to hold colour literals.
+  Provenance: k-means (k=16, seed 11, 121,379 sampled opaque pixels, every 9th pixel)
+  over brand/LOGO VENUSPAIR PNG...png (RGBA, IHDR colourtype 6). Each centre was
+  snapped to the nearest real pixel; the coordinate is noted as x,y in the source image.
+  --azure and --ember are the most saturated real pixels in the blue and orange bands.
+  Everything else (panels, borders, glows) is derived with color-mix() from these.
+*/
+:root {
+  --void:   #000000; /* 0,0 — the logo's own background value */
+  --abyss:  #092545; /* 569,982 */
+  --deep:   #123c64; /* 646,1043 */
+  --steel:  #385471; /* 1097,976 */
+  --azure:  #26659b; /* 1099,996 most saturated blue */
+  --mist:   #a9b4c0; /* 1228,956 */
+  --ice:    #e4e7eb; /* 1474,674 */
+  --sand:   #b8a89c; /* 821,649 */
+  --ember:  #bb8d68; /* 1077,666 most saturated orange */
+
+  --text: var(--ice);
+  --muted: var(--mist);
+  --accent: var(--sand);
+  --up: var(--ice);
+  --down: var(--ember);
+  --panel: color-mix(in srgb, var(--abyss) 38%, var(--void) 62%);
+  --panel-solid: color-mix(in srgb, var(--abyss) 22%, var(--void) 78%);
+  --line: color-mix(in srgb, var(--mist) 16%, transparent);
+  --line-strong: color-mix(in srgb, var(--azure) 55%, transparent);
+  --glow: color-mix(in srgb, var(--azure) 40%, transparent);
+  --wash: color-mix(in srgb, var(--ice) 4%, transparent);
+
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-serif: "IBM Plex Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-pill: 999px;
+  --radius-card: 22px;
+  --radius-tile: 18px;
+  --radius-row: 14px;
+  --gutter: 16px;
+  --tap: 44px;
+
+  --spring-stiffness: 170;
+  --spring-damping: 24;
+  --stagger: 70ms;
+  --fade: 520ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

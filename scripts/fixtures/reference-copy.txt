@@ -1,0 +1,13 @@
+A live map of the world, written in coins.
+Countries pair to $earth. Everything else pairs to a country.
+Earth Encyclopedia is a world map where each country is a token paired to $earth. Once a country exists, people, news, events, and things can pair to that country — so the map becomes a living record of the planet.
+1 · THE ROOT $earth One coin for the planet. Every country pair is quoted in earth.
+2 · THE COUNTRY USA / EARTH The highest-cap country coin becomes that nation's page on the map.
+3 · THE STORY hotdog / USA People, events, news, and things pair to the country they belong to.
+$earth → country / earth → anything / country
+Enter earth
+earth MAP STATS LAUNCH
+THE PLANET COIN stats Price, market cap, coverage, and the newest pairs. The map stays clean — this page is where $earth lives.
+Reading earth… EARTH CHAT
+no earth pair yet; waiting for a pair; hottest pair; newest pair; top country; country cap; earth cap plus every pair; summed across earth and every pair; earth holders; earth liquidity; earth ath; all-time high market cap; market cap; market share; paired coins; off the map; recent launches; no recent launches yet; this country; paired against; talk earth, countries, pairs…
+Launch a coin paired to EARTH; your coin / EARTH; pair locked; No coin is paired to earth for this country yet.
